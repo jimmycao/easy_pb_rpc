@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
 		printf("echo 3 Rpc Response is %s\n", response.text().c_str());
 	}
 
-	sleep(3);
+	sleep(1);
 
 	return 0;
 }

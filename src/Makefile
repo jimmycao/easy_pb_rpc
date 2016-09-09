@@ -5,10 +5,10 @@ RPCCLTLIB=librpcclient.a
 INCLUDES=-I/usr/local/include -I/home/jimmy/usr/local/libevent-2.0.22/include -I/home/jimmy/usr/local/protobuf-2.4.1/include
 CCFLAGS=-g
 
-all: Proto $(RPCSVRLIB) $(RPCCLTLIB)
+all: $(RPCSVRLIB) $(RPCCLTLIB)
 
 Proto: Rpc.proto
-	protoc --cpp_out=./ Rpc.proto
+	protoc --cpp_out=. Rpc.proto
 
 Rpc.pb.o:Rpc.pb.cc
 	c++ $(CCFLAGS) $(INCLUDES) -o $@ -c $<
@@ -20,7 +20,7 @@ Rpc.pb.o:Rpc.pb.cc
 $(RPCSVRLIB): Proto RpcServer.o ServiceMgr.o Common.o Rpc.pb.o
 	ar cru $(RPCSVRLIB) RpcServer.o ServiceMgr.o Common.o Rpc.pb.o
 
-$(RPCCLTLIB): Proto RpcClient.o RpcChannel.o Common.o
+$(RPCCLTLIB): Proto RpcClient.o RpcChannel.o Common.o Rpc.pb.o
 	ar cru $(RPCCLTLIB) RpcClient.o RpcChannel.o Common.o Rpc.pb.o
 
 clean:
