@@ -1,7 +1,7 @@
 
 #include <google/protobuf/service.h>
 #include <google/protobuf/descriptor.h>
-#include "common.h"
+#include "Common.h"
 
 namespace PBRPC {
 

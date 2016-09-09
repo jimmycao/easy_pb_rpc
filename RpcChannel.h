@@ -1,9 +1,11 @@
 
+#include <string>
+
 #include <google/protobuf/service.h>
 #include <google/protobuf/descriptor.h>
-#include <string>
-#include "rpc_client.h"
-#include "common.h"
+
+#include "RpcClient.h"
+#include "Common.h"
 
 namespace PBRPC {
 	using google::protobuf::Message;

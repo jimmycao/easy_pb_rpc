@@ -2,9 +2,9 @@
 #include <event2/buffer.h>
 #include <event2/bufferevent.h>
 
-#include "common.h"
-#include "service_mgr.h"
-#include "util.h"
+#include "Common.h"
+#include "ServiceMgr.h"
+#include "Util.h"
 
 namespace PBRPC {
 	struct Connection {

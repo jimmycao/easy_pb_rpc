@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include "rpc_channel.h"
-#include "rpc_controller.h"
+
+#include "RpcChannel.h"
+#include "RpcController.h"
 
 #include "PServer.pb.h"
 

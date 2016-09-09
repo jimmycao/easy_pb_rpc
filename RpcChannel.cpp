@@ -1,18 +1,15 @@
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+
 #include <string>
 #include <sstream>
 #include <iostream>
 
-// for inet_aton
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-//
-//
-#include "rpc_channel.h"
-#include "svc_name2id.h"
-
 #include <google/protobuf/message.h>
 
+#include "RpcChannel.h"
+#include "ServiceName2Id.h"
 
 using namespace PBRPC;
 using google::protobuf::MethodDescriptor;

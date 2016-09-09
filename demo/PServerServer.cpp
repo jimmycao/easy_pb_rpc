@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 
-#include "rpc_server.h"
+#include "RpcServer.h"
 #include "PServer.pb.h"
 
 using namespace PBRPC;

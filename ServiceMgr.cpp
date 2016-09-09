@@ -1,10 +1,10 @@
-#include "rpc.pb.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
 #include <string>
-#include "service_mgr.h"
+
+#include "Rpc.pb.h"
+#include "ServiceMgr.h"
 
 using namespace ::google::protobuf;
 using namespace PBRPC;

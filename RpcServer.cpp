@@ -4,9 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "rpc_server.h"
-#include "svc_name2id.h"
-#include "rpc_controller.h"
+
+#include "RpcServer.h"
+#include "ServiceName2Id.h"
+#include "RpcController.h"
 
 using namespace PBRPC;
 

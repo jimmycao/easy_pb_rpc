@@ -1,5 +1,6 @@
-#include <google/protobuf/service.h>
 #include <string>
+
+#include <google/protobuf/service.h>
 
 namespace PBRPC {
 	using std::string;

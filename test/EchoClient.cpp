@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "rpc_channel.h"
-#include "rpc_controller.h"
+#include "RpcChannel.h"
+#include "RpcController.h"
 
 #include "Echo.pb.h"
 

@@ -1,16 +1,17 @@
-#include <netinet/in.h> // sockaddr_in
-#include <sys/socket.h> // socket functions
-#include <arpa/inet.h> // htons
+#include <netinet/in.h> 
+#include <sys/socket.h>
+#include <arpa/inet.h>
 #include <pthread.h>
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+
 #include <sstream>
 
-#include "rpc_client.h"
-#include "rpc.pb.h"
+#include "RpcClient.h"
+#include "Rpc.pb.h"
 
 using namespace PBRPC;
 

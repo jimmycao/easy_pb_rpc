@@ -1,22 +1,27 @@
-COMMON = common.h rpc_controller.h svc_name2id.h
-RPCSVRLIB=librpcsvr.a
-RPCCLTLIB=librpcclt.a
+COMMON = Common.h RpcController.h ServiceName2Id.h
+RPCSVRLIB=librpcserver.a
+RPCCLTLIB=librpcclient.a
 
 INCLUDES=-I/usr/local/include -I/home/jimmy/usr/local/libevent-2.0.22/include -I/home/jimmy/usr/local/protobuf-2.4.1/include
 CCFLAGS=-g
-%.o:%.cc
+
+all: Proto $(RPCSVRLIB) $(RPCCLTLIB)
+
+Proto: Rpc.proto
+	protoc --cpp_out=./ Rpc.proto
+
+Rpc.pb.o:Rpc.pb.cc
 	c++ $(CCFLAGS) $(INCLUDES) -o $@ -c $<
 
-all: PROTO $(RPCSVRLIB) $(RPCCLTLIB)
+%.o:%.cpp
+	c++ $(CCFLAGS) $(INCLUDES) -o $@ -c $<
 
-PROTO: rpc.proto
-	protoc --cpp_out=. rpc.proto
 
-$(RPCSVRLIB): rpc_server.o service_mgr.o common.o rpc.pb.o
-	ar cru $(RPCSVRLIB) rpc_server.o service_mgr.o common.o rpc.pb.o
+$(RPCSVRLIB): Proto RpcServer.o ServiceMgr.o Common.o Rpc.pb.o
+	ar cru $(RPCSVRLIB) RpcServer.o ServiceMgr.o Common.o Rpc.pb.o
 
-$(RPCCLTLIB): rpc_client.o rpc_channel.o common.o
-	ar cru $(RPCCLTLIB) rpc_client.o rpc_channel.o common.o rpc.pb.o
+$(RPCCLTLIB): Proto RpcClient.o RpcChannel.o Common.o
+	ar cru $(RPCCLTLIB) RpcClient.o RpcChannel.o Common.o Rpc.pb.o
 
 clean:
-	-rm *.o $(RPCCLTLIB) $(RPCSVRLIB)
+	-rm *.o $(RPCCLTLIB) $(RPCSVRLIB) *.pb.h *.pb.cc *.a
