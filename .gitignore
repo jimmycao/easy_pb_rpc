@@ -1,0 +1,6 @@
+librpcclt.a
+librpcsvr.a
+test/client
+test/server
+soft/
+*.o

@@ -2,7 +2,7 @@ COMMON = common.h rpc_controller.h svc_name2id.h
 RPCSVRLIB=librpcsvr.a
 RPCCLTLIB=librpcclt.a
 
-INCLUDES=-I/usr/local/include
+INCLUDES=-I/usr/local/include -I/home/jimmy/usr/local/libevent-2.0.22/include -I/home/jimmy/usr/local/protobuf-2.4.1/include
 CCFLAGS=-g
 %.o:%.cc
 	c++ $(CCFLAGS) $(INCLUDES) -o $@ -c $<
