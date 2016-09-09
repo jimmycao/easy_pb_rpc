@@ -1,6 +1,8 @@
 librpcclt.a
 librpcsvr.a
-test/client
-test/server
 soft/
+rpc.vpj
 *.o
+*_main
+*.pb.h
+*.pb.cc

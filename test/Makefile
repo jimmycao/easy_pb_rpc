@@ -4,18 +4,22 @@ CFLAGS=-g
 
 COMMON = common.h rpc_controller.h svc_name2id.h
 
-all: client server protoc_middleman
+all: protoc_run EchoClient_main EchoServer_main
 
-%.o:%.cc
+protoc_run: Echo.proto
+	protoc --cpp_out=./ Echo.proto
+
+Echo.pb.o:Echo.pb.cc
 	c++ $(INCLUDES) $(CFLAGS) -o $@ -c $<
 
-client: clt.o helloworld.pb.o
-	c++ $(INCLUDES) -o client clt.o helloworld.pb.o -L../ -lrpcclt $(LDFLAGS) 
+%.o:%.cpp
+	c++ $(INCLUDES) $(CFLAGS) -o $@ -c $<
 
-server: svr.o helloworld.pb.o
-	c++ $(INCLUDES) -o server svr.o helloworld.pb.o  -L../ -lrpcsvr $(LDFLAGS)
-protoc_middleman: helloworld.proto
-	protoc --cpp_out=. helloworld.proto
+EchoClient_main: protoc_run Echo.pb.o EchoClient.o
+	c++ $(INCLUDES) -o EchoClient_main EchoClient.o Echo.pb.o -L../ -lrpcclt $(LDFLAGS) 
+
+EchoServer_main: protoc_run Echo.pb.o EchoServer.o
+	c++ $(INCLUDES) -o EchoServer_main EchoServer.o Echo.pb.o  -L../ -lrpcsvr $(LDFLAGS)
 
 clean:
-	-rm *.o server client
+	-rm *_main *.o *.pb.h *.pb.cc

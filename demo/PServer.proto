@@ -1,0 +1,28 @@
+option cc_generic_services = true;
+
+message FeatureValue {
+	required uint32 slot = 1;
+	optional uint32 silent_days = 2;
+	optional float delta_score = 3;
+	optional float cvm_show = 4;
+	optional float cvm_clk = 5;
+	optional float basic_lr_w = 6;
+	optional float basic_lr_g2sum = 7;
+	optional float lr_w = 8;
+	optional float lr_g2sum = 9;
+	repeated float mf_w = 10;
+	optional float mf_g2sum = 11;
+	optional uint32 version = 12;
+}
+
+message PullRequest {
+	required uint32 key = 1;
+}
+
+message PullResponse {
+	required FeatureValue fv = 1;
+}
+
+service PServerService {
+	rpc pull(PullRequest) returns(PullResponse);
+}

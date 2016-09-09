@@ -1,15 +1,15 @@
 option cc_generic_services = true;
 
-message FooRequest {
+message EchoRequest {
 	required string text = 1;
 	optional int32 times = 2;
 }
 
-message FooResponse {
+message EchoResponse {
 	required string text = 1;
 	optional bool result = 2;
 }
 
 service EchoService {
-	rpc Foo(FooRequest) returns(FooResponse);
+	rpc echo(EchoRequest) returns(EchoResponse);
 }
