@@ -1,0 +1,5 @@
+package im.ctrx;
+
+message CtrXReserved { 
+    repeated float weight_item = 1; 
+};
